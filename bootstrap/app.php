@@ -18,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ]);
 
     $middleware->trustProxies(at: '*');
+    $middleware->append(\App\Http\Middleware\TrustProxies::class);
+
 })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
