@@ -179,38 +179,25 @@ label {
         Masukkan username dan password anda
     </div>
 
-    <form action="{{ route('login.proses') }}" method="POST" autocomplete="off">
+        <form action="{{ route('login.proses') }}" method="POST">    
         @csrf
 
-        <!-- USERNAME -->
-        <div class="mb-4">
-            <label>USERNAME</label>
-           <input type="text"
-       name="username"
-       class="form-control"
-       placeholder="Masukkan username"
-       autocomplete="off"
-       required>
-        </div>
+    <div class="mb-4">
+        <label>USERNAME</label>
+        <input type="text" name="username" class="form-control" required>
+    </div>
 
-        <!-- PASSWORD -->
-        <div class="mb-4">
-            <label>PASSWORD</label>
-           <input type="password"
-       name="password"
-       class="form-control"
-       placeholder="Masukkan password"
-       autocomplete="new-password"
-       required>
-        </div>
+    <div class="mb-4">
+        <label>PASSWORD</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-login">
-                Login
-            </button>
-        </div>
-
-    </form>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-login">
+            Login
+        </button>
+    </div>
+</form>
 
     <!-- FOOTER -->
     <div class="login-footer">

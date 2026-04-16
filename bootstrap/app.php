@@ -12,11 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-   ->withMiddleware(function ($middleware) {
+  ->withMiddleware(function ($middleware) {
     $middleware->alias([
         'login' => CekLogin::class,
-     ]);
-    })
+    ]);
+
+    $middleware->trustProxies(at: '*');
+})
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
