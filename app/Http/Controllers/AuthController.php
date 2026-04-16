@@ -80,12 +80,14 @@ public function login(Request $request)
         return back()->with('error', 'Password salah');
     }
 
+    // ✅ SIMPAN SESSION (VERSI AMAN)
     $request->session()->put('login', true);
-$request->session()->regenerate();
+    $request->session()->put('user_id', $user->id_user);
+    $request->session()->put('username', $user->username);
+    $request->session()->put('nama', $user->nama ?? '');
 
-    Session::put('user_id', $user->id_user); // ⬅️ FIX
-    Session::put('username', $user->username);
-    Session::put('nama', $user->nama ?? '');
+    // 🔥 PENTING
+    $request->session()->regenerate();
 
     return redirect('/dashboard');
 }

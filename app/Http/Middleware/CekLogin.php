@@ -5,16 +5,15 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Session;
 
 class CekLogin
 {
     public function handle(Request $request, Closure $next): Response
-{
-    if (!$request->session()->get('login')) {
-        return redirect('/')->with('error', 'Silakan login terlebih dahulu');
-    }
+    {
+        if (!$request->session()->get('login')) {
+            return redirect('/')->with('error', 'Silakan login terlebih dahulu');
+        }
 
-    return $next($request);
-}
+        return $next($request);
     }
+}
