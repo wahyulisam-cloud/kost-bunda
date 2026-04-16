@@ -87,6 +87,7 @@ public function login(Request $request)
     $request->session()->put('nama', $user->nama ?? '');
 
     // 🔥 PENTING
+    $request->session()->save();
     $request->session()->regenerate();
     dd($request->session()->all());
     return redirect('/dashboard');

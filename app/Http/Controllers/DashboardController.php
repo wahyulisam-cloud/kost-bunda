@@ -47,6 +47,7 @@ class DashboardController extends Controller
         // =======================
         $grafik = $this->ambilGrafik($tahun);
 
+        dd('MASUK DASHBOARD');
         return view('dashboard.index', compact(
             'pemasukan',
             'pengeluaran',
@@ -56,7 +57,6 @@ class DashboardController extends Controller
             'grafik',
             'tahun'
         ));
-        dd('MASUK DASHBOARD');
     }
 
     // =======================
