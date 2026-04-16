@@ -88,7 +88,7 @@ public function login(Request $request)
 
     // 🔥 PENTING
     $request->session()->regenerate();
-
+    dd($request->session()->all());
     return redirect('/dashboard');
 }
 

@@ -56,6 +56,7 @@ class DashboardController extends Controller
             'grafik',
             'tahun'
         ));
+        dd('MASUK DASHBOARD');
     }
 
     // =======================
