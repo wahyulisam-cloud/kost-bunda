@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Session;
 class CekLogin
 {
     public function handle(Request $request, Closure $next): Response
-    {
-        if (!Session::get('login')) {
-            return redirect('/')->with('error', 'Silakan login terlebih dahulu');
-        }
-
-        return $next($request);
+{
+    if (!$request->session()->get('login')) {
+        return redirect('/')->with('error', 'Silakan login terlebih dahulu');
     }
+
+    return $next($request);
 }
+    }
