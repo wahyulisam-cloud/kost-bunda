@@ -81,6 +81,10 @@ public function login(Request $request)
     }
 
     Session::put('login', true);
+
+if (!Session::get('login')) {
+    dd('SESSION GAGAL DISIMPAN');
+}
     Session::put('user_id', $user->id_user); // ⬅️ FIX
     Session::put('username', $user->username);
     Session::put('nama', $user->nama ?? '');
