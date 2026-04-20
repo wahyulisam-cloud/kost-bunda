@@ -14,10 +14,11 @@ use App\Http\Controllers\LaporanController;
 |--------------------------------------------------------------------------
 */
 Route::get('/debug-session', function () {
-    return [
+    return response()->json([
+        'message' => 'DEBUG AKTIF',
         'session' => session()->all(),
         'cookie' => request()->cookies->all()
-    ];
+    ]);
 });
 
 // Halaman login
