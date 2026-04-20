@@ -10,8 +10,9 @@ class CekLogin
 {
 public function handle(Request $request, Closure $next): Response
 {
-    if (!$request->session()->has('login')) {
-        return redirect('/')->with('error', 'Silakan login terlebih dahulu');
+    dd(session()->all());
+    if (!session()->has('login')) {
+        return redirect('/');
     }
 
     return $next($request);
