@@ -12,10 +12,15 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function ($middleware) {
-        $middleware->alias([
-            'login' => CekLogin::class,
-        ]);
+    ->withMiddleware(function (Middleware $middleware) {
+
+    // 🔥 WAJIB: aktifkan web middleware (session, csrf, dll)
+    $middleware->web();
+
+    // Alias middleware kamu
+    $middleware->alias([
+        'login' => CekLogin::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

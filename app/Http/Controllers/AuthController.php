@@ -51,9 +51,7 @@ class AuthController extends Controller
         // 🔥 PAKSA SIMPAN (KHUSUS RAILWAY)
         $request->session()->save();
 
-        // 🔥 DEBUG (sementara saja)
-        // dd($request->session()->all());
-
+     
         return redirect('/dashboard');
     }
 

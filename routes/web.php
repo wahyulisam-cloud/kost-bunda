@@ -13,6 +13,13 @@ use App\Http\Controllers\LaporanController;
 | ROUTE AUTHENTIKASI
 |--------------------------------------------------------------------------
 */
+Route::get('/debug-session', function () {
+    return [
+        'session' => session()->all(),
+        'cookie' => request()->cookies->all()
+    ];
+});
+
 // Halaman login
 Route::get('/', [AuthController::class, 'loginForm'])->name('login');
 
@@ -28,7 +35,7 @@ Route::middleware('login')->get('/logout', [AuthController::class, 'logout'])->n
 | ROUTE YANG WAJIB LOGIN
 |--------------------------------------------------------------------------
 */
-Route::middleware('login')->group(function () {
+Route::middleware(['web', 'login'])->group(function () {
 
     // ===============================
     // DASHBOARD
@@ -49,20 +56,11 @@ Route::middleware('login')->group(function () {
         Route::delete('/delete/{id}', [PenghuniController::class, 'destroy'])->name('penghuni.destroy');
     });
 
-    // ===============================
-    //  RESOURCE PEMASUKAN
-    // ===============================
     Route::resource('pemasukan', PemasukanController::class);
 
-    // ===============================
-    // SEARCH + RESOURCE PENGELUARAN
-    // ===============================
     Route::get('/pengeluaran/search', [PengeluaranController::class, 'search'])->name('pengeluaran.search');
     Route::resource('pengeluaran', PengeluaranController::class);
 
-    // ===============================
-    // LAPORAN
-    // ===============================
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/laporan/excel/{bulan}/{tahun}', [LaporanController::class, 'exportExcel']);
 

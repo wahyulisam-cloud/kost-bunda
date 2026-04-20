@@ -191,6 +191,23 @@ label {
         <label>PASSWORD</label>
         <input type="password" name="password" class="form-control" required>
     </div>
+    
+
+    <!-- ALERT SUCCESS -->
+@if(session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
+
+<!-- ALERT ERROR -->
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
 
     <div class="d-grid">
         <button type="submit" class="btn btn-login">
