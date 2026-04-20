@@ -329,7 +329,7 @@
     <div class="row align-items-center">
 
         <div class="col-md-6 logo-box text-center">
-            <img src="{{ asset('storage/foto_user/logo_baru.png') }}" alt="Logo Kost Bunda">
+            <img src="{{ asset('foto_user/logo_baru.png') }}" alt="Logo Kost Bunda">
         </div>
 
         <div class="col-md-6">

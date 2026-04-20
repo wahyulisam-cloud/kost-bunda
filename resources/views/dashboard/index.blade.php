@@ -8,7 +8,7 @@
 <div class="container-fluid px-0 mb-5">
     <div class="position-relative"
          style="
-            background-image: url('{{ asset('storage/foto_user/rumah.jpg') }}');
+            background-image: url('https://kost-bunda-production.up.railway.app/foto_user/rumah.jpg');
             background-size: cover;
             background-position: center;
             height: 450px;
