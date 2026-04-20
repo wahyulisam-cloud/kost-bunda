@@ -8,24 +8,25 @@
 <div class="container-fluid px-0 mb-5">
     <div class="position-relative"
          style="
-            background-image: url('https://kost-bunda-production.up.railway.app/foto_user/rumah.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 450px;
-            overflow: hidden;
-         ">
+    background-image: url('https://kost-bunda-production.up.railway.app/foto_user/rumah.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 10px;
+">
 
         {{-- Overlay --}}
-        <div class="position-absolute top-0 start-0 w-100 h-100"
-             style="
-                background: linear-gradient(
-                    180deg,
-                    rgba(0,0,0,0.50) 0%,
-                    rgba(0,0,0,0.40) 50%,
-                    rgba(0,0,0,0.60) 100%
-                );
-             ">
-        </div>
+       <div class="position-absolute top-0 start-0 w-100 h-100"
+     style="
+        background: linear-gradient(
+            180deg,
+            rgba(0,0,0,0.2) 0%,
+            rgba(0,0,0,0.2) 50%,
+            rgba(0,0,0,0.3) 100%
+        );
+     ">
+</div>
 
         {{-- Text --}}
         <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-3">
