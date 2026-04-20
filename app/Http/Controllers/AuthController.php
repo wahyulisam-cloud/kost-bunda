@@ -20,40 +20,48 @@ class AuthController extends Controller
     // =========================
     // LOGIN WEB
     // =========================
-    public function login(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+   public function login(Request $request)
+{
+    $request->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ]);
 
-        $user = DB::table('users')
-            ->where('username', $request->username)
-            ->first();
+    $user = DB::table('users')
+        ->where('username', $request->username)
+        ->first();
 
-        if (!$user) {
-            return back()->with('error', 'Username tidak ditemukan');
-        }
-
-        if (!Hash::check($request->password, $user->password)) {
-            return back()->with('error', 'Password salah');
-        }
-
-        // 🔥 REGENERATE DULU (PENTING)
-        $request->session()->regenerate();
-
-        // ✅ SIMPAN SESSION
-        $request->session()->put('login', true);
-        $request->session()->put('user_id', $user->id_user);
-        $request->session()->put('username', $user->username);
-        $request->session()->put('nama', $user->nama ?? '');
-
-        // 🔥 PAKSA SIMPAN (KHUSUS RAILWAY)
-        $request->session()->save();
-
-     
-        return redirect('/dashboard');
+    // 🔥 DEBUG 1: cek user
+    if (!$user) {
+        dd('USER TIDAK DITEMUKAN');
     }
+
+    // 🔥 DEBUG 2: cek password
+    if (!Hash::check($request->password, $user->password)) {
+        dd('PASSWORD SALAH');
+    }
+
+    // 🔥 DEBUG 3: sebelum simpan session
+    dd([
+        'status' => 'LOGIN BERHASIL',
+        'user' => $user
+    ]);
+
+    // =============================
+    // KODE ASLI (sementara tidak jalan karena dd)
+    // =============================
+
+    $request->session()->regenerate();
+
+    $request->session()->put('login', true);
+    $request->session()->put('user_id', $user->id_user);
+    $request->session()->put('username', $user->username);
+    $request->session()->put('nama', $user->nama ?? '');
+
+    $request->session()->save();
+
+    return redirect('/dashboard');
+}
 
     // =========================
     // LOGIN API (BERSIH)
