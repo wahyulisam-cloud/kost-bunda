@@ -8,13 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CekLogin
 {
-public function handle(Request $request, Closure $next): Response
-{
-    dd(session()->all());
-    if (!session()->has('login')) {
-        return redirect('/');
-    }
+    public function handle(Request $request, Closure $next): Response
+    {
+        if (!session()->has('login')) {
+            return redirect('/');
+        }
 
-    return $next($request);
-}
+        return $next($request);
+    }
 }
