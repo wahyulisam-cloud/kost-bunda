@@ -20,6 +20,9 @@ Route::get('/debug-session', function () {
         'cookie' => request()->cookies->all()
     ]);
 });
+Route::get('/generate-password', function () {
+    return bcrypt('admin123');
+});
 
 // Halaman login
 Route::get('/', [AuthController::class, 'loginForm'])->name('login');
